@@ -150,3 +150,7 @@ http {
 #	}
 #}
 ```  
+now yoiu must launch chef-client in local mode for install or update your machine:
+```
+sudo chef-client -z --runlist "mynginx"
+```

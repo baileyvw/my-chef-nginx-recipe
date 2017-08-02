@@ -1,10 +1,10 @@
 name 'mynginx'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
+maintainer 'Pierangelo Orizio'
+maintainer_email 'pierangelo1982@gmail.com'
 license 'all_rights'
 description 'Installs/Configures mynginx'
 long_description 'Installs/Configures mynginx'
-version '0.1.1'
+version '0.1.2'
 
 # If you upload to Supermarket you should set this so your cookbook
 # gets a `View Issues` link
