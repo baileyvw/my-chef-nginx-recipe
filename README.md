@@ -42,7 +42,8 @@ end
 
 
 template "/etc/nginx/nginx.conf" do   
-  source "nginx.conf.erb"   notifies :reload, "service[nginx]"
+  source "nginx.conf.erb"
+  notifies :reload, "service[nginx]"
 end
 ```
 
