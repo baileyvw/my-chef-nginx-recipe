@@ -1,15 +1,18 @@
-nstall chefDK:
+Ok, this is how create a simple nginx cookbook for Chef.
+For this example I don’t use chef-server, but i work directly on the machine. In my case the machine is a Vagrant VM based on Ubuntu/xenial64, but i think that you can use a VPS or Cloud service and others Linux OS.
+
+As first thing to do, we must install ChefDK on our machine:
 
 ```
 curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chefdk -c stable
 ```
 
-create a folder named cookbooks where i will go to insert the my coobooks:
+Then we have to create a folder called cookbooks where we will go to insert our cookbooks:
 ```
 mkdir cookbooks
 ```
 
-inside the cookbooks folder I create my first cookbook named mynginx:
+inside the cookbooks folder we create our first cookbook named mynginx:
 ```
 cd cookbooks
 ```
@@ -17,7 +20,7 @@ cd cookbooks
 chef generate cookbook mynginx
 ```
 
-edit the file default.rb in in mynginx/recipes/default.rb
+Edit the file default.rb in in mynginx/recipes/default.rb
 ```
 package 'git'
 package 'tree'
@@ -38,12 +41,12 @@ cookbook_file "/var/www/html/index.html" do
 end
 ```
 
-now from inside the mynginx folder I must generate a file index.html:
+from inside the mynginx folder I must generate a file index.html:
 ```
 chef generate file index.html
 ```
 
-now I edit the file index.html in files/default/index.html
+edit the file index.html in files/default/index.html
 ```
 <html>
   <head>
@@ -56,13 +59,12 @@ now I edit the file index.html in files/default/index.html
 </html>
 ```
 
-now create a templates named nginx.conf:
+create a templates named nginx.conf:
 ```
 chef generate template nginx.conf
 ```
 
 edit the file nginx.conf.erb in templates/nginx.conf.erb and insert your custom configuration of nginx.
-
 ```
 user www-data;
 worker_processes auto;
@@ -150,7 +152,7 @@ http {
 #	}
 #}
 ```  
-now yoiu must launch chef-client in local mode for install or update your machine:
+now you can launch chef-client in local mode for install or update your machine:
 ```
 sudo chef-client -z --runlist "mynginx"
 ```
